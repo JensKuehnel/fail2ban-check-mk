@@ -20,11 +20,10 @@
 
 if [ -x /usr/bin/fail2ban-client ]; then
 echo "<<<fail2ban>>>"
-jails=`/usr/bin/fail2ban-client status | grep "Jail list" | sed -e 's/.*://' -e 's/,//g'`
+jails="$(/usr/bin/fail2ban-client status | grep "Jail list" | sed -e 's/.*://' -e 's/,//g')"
 	echo "Detected jails: $jails"
 	for jail in $jails
 	do
 		/usr/bin/fail2ban-client status "$jail"
 	done
 fi
-
