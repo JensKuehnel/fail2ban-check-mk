@@ -24,7 +24,6 @@ cp agents/plugins/fail2ban ~/local/share/check_mk/agents/plugins/fail2ban
 chown $USER ~/local/share/check_mk/agents/plugins/fail2ban
 chmod 755   ~/local/share/check_mk/agents/plugins/fail2ban
 
-
-
-
+rm -f ~/local/lib/python3/cmk/base/plugins/agent_based/__pycache__/fail2ban_checks.*
+rm -f ~/local/lib/python3/cmk/base/cee/plugins/bakery/__pycache__/fail2ban.*
 

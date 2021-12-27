@@ -58,6 +58,12 @@ def check_fail2ban(item, params, section):
     currentbannedcrit = params["banned"][1]
     currentbannedwarn = params["banned"][0]
 
+    # set variable to check for jails that are not there anymore
+    currentfailed = None
+    currentbanned = None
+    totalfailed = None
+    totalbanned = None
+
     for entry in section:
         if (entry[:3]) == ['Status', 'for', 'the']:
             currentjail = entry[4]
@@ -72,6 +78,25 @@ def check_fail2ban(item, params, section):
             currentbanned = int(entry[3])
         elif (entry[:3]) == ['|-', 'Total', 'banned:', ]:
             totalbanned = int(entry[3])
+
+    # removed jails should not create a crash,
+    # so we dont yield anything and simply return without anything
+    if (currentfailed is None) or \
+            (totalfailed is None) or \
+            (currentbanned is None) or \
+            (totalbanned is None):
+        return
+    elif currentfailedcrit <= currentfailed or \
+            currentbannedcrit <= currentbanned:
+        s = State.CRIT
+        status = "Crit"
+    elif currentfailedwarn <= currentfailed or \
+            currentbannedwarn <= currentbanned:
+        s = State.WARN
+        status = "Warn"
+    else:
+        s = State.OK
+        status = "OK"
 
     yield Metric(
             name="current_failed",
@@ -91,16 +116,6 @@ def check_fail2ban(item, params, section):
             name="total_banned",
             value=totalbanned,
             )
-
-    if currentfailedcrit <= currentfailed or currentbannedcrit <= currentbanned:
-        s = State.CRIT
-        status = "Crit"
-    elif currentfailedwarn <= currentfailed or currentbannedwarn <= currentbanned:
-        s = State.WARN
-        status = "Warn"
-    else:
-        s = State.OK
-        status = "OK"
 
     yield Result(
             state=s,
