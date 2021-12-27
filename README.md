@@ -6,7 +6,7 @@ This is my first plugin with the new API.
 I followed [Writing you own check plug-ins](https://docs.checkmk.com/latest/en/devel_check_plugins.html) and the [Guidelines](https://docs.checkmk.com/latest/en/dev_guidelines.html).
 
 ## Install from source 
-* 
+* clone repo as site user and run copy-to-mk.sh
 
 ## Install from package
 * Download mkp.
