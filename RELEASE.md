@@ -8,3 +8,6 @@ It also adds support to copy all things to the right place in checkmk make it po
 ### Version 1.9.1 (27.12.2021)
 remove crash when jail is not available anymore.
 
+### Version 2.0.0 (28.03.2022)
+Added bakery implementation.
+
