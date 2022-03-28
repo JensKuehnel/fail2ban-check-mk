@@ -1,14 +1,31 @@
-#!/usr/bin/python3
-# -*- encoding: utf-8; py-indent-offset: 4 -*-
-# Rule for Plugins -> Agent Bakery
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-register_rule(
-    "agents/" + _("Agent Plugins"),
-    "agent_config:fail2ban",
-    Dictionary(
+from cmk.gui.plugins.wato import (
+    rulespec_registry,
+    HostRulespec,
+)
+from cmk.gui.valuespec import (
+    Dictionary,
+    DropdownChoice,
+    TextAscii,
+    Age,
+)
+
+from cmk.gui.i18n import _
+from cmk.gui.plugins.wato import (
+    HostRulespec,
+    rulespec_registry,
+)
+from cmk.gui.cee.plugins.wato.agent_bakery.rulespecs.utils import RulespecGroupMonitoringAgentsAgentPlugins
+
+
+def _valuespec_agent_config_fail2ban():
+    return Dictionary(
         title=_("fail2ban Plugin"),
-        help=_(
-            "This will deploy the agent plugin <tt>fail2ban</tt> on linux systems."),
+        help=
+        _("This will deploy the agent plugin <tt>fail2ban</tt> on linux systems."
+          ),
         elements=[
             ("activated",
              DropdownChoice(
@@ -31,6 +48,13 @@ register_rule(
                  default_value=300)),
         ],
         required_keys=["activated"],
-    ),
-    match="dict",
-)
+    )
+
+
+rulespec_registry.register(
+    HostRulespec(
+        group=RulespecGroupMonitoringAgentsAgentPlugins,
+        name="agent_config:fail2ban",
+        valuespec=_valuespec_agent_config_fail2ban,
+    ))
+
