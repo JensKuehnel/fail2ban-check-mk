@@ -4,7 +4,7 @@
 from pathlib import Path
 from typing import Any
 
-from .bakery_api.v1 import (OS, FileGenerator, Plugin, register)
+from .bakery_api.v1 import (OS, FileGenerator, Plugin, PluginConfig, register)
 
 
 def get_fail2ban_files(conf: Any) -> FileGenerator:
