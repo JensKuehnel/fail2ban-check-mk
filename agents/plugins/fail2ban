@@ -24,6 +24,6 @@ jails="$(/usr/bin/fail2ban-client status | grep "Jail list" | sed -e 's/.*://' -
 	echo "Detected jails: $jails"
 	for jail in $jails
 	do
-		/usr/bin/fail2ban-client status "$jail"
+		/usr/bin/fail2ban-client status "$jail" | grep -v "Banned IP list:"
 	done
 fi
