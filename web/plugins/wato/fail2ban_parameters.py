@@ -41,20 +41,22 @@ def _parameter_valuespec_fail2ban():
              Tuple(
                  title=_("Number of banned IPs"),
                  help=_("This number of IPs have failed multiple times and "
-                        "are banned of a configure amount of times."),
+                        "have been banned for a configured number of times. "
+                        "(Set to 0 to disable)"),
                  elements=[
-                     Integer(title=_("Warning at")),
-                     Integer(title=_("Critical at")),
+                     Integer(title=_("Warning at"), default_value=25),
+                     Integer(title=_("Critical at"), default_value=50),
                  ],
              )),
          ("failed",
              Tuple(
                  title=_("Number of failed IPs"),
                  help=_("This number of IPs have failed logins. "
-                        "If this happens multiple times they will be banned."),
+                        "If this happens multiple times they will be banned. "
+                        "(Set to 0 to disable)"),
                  elements=[
-                     Integer(title=_("Warning at")),
-                     Integer(title=_("Critical at")),
+                     Integer(title=_("Warning at"), default_value=50),
+                     Integer(title=_("Critical at"), default_value=100),
                  ],
              )),
         ],
