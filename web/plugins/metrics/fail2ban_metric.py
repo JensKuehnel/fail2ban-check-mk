@@ -36,7 +36,7 @@ metric_info["current_banned"] = {
 }
 
 metric_info["total_failed"] = {
-    "title": _("toal failed"),
+    "title": _("total failed"),
     "unit": "count",
     "color": "16/b",
 }
