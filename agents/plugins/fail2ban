@@ -18,12 +18,9 @@
 # Boston, MA 02110-1301 USA.
 
 
-if [ -x /usr/bin/fail2ban-client ]; then
-echo "<<<fail2ban>>>"
-jails="$(/usr/bin/fail2ban-client status | grep "Jail list" | sed -e 's/.*://' -e 's/,//g')"
-	echo "Detected jails: $jails"
-	for jail in $jails
-	do
-		/usr/bin/fail2ban-client status "$jail"
-	done
+if command -v fail2ban-client > /dev/null 2>&1; then
+	echo "<<<fail2ban:sep(58)>>>"
+	fail2ban-client status |
+		awk -F: '$1 ~ /Jail list$/ { gsub(/,/, "", $2); print $2}' |
+		xargs -n1 fail2ban-client status
 fi
