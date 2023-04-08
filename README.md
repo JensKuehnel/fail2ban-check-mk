@@ -15,6 +15,5 @@ I followed [Writing you own check plug-ins](https://docs.checkmk.com/latest/en/d
 ## Parameter to configure
 
 ## TODO
-* use parse functions?
 * Add Agent Bakery support (I use core only)
 * Decide if total banned/failed are something you want to graph and altering on
