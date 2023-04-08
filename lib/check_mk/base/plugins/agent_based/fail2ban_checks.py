@@ -39,7 +39,7 @@
 # `- Actions
 #    |- Currently banned:	5
 #    |- Total banned:	50
-#    `- Banned IP list:	112.122.54.162 144.135.85.184 103.200.21.89 1.14.61.204
+#    `- Banned IP list:	192.0.2.162 198.51.100.184 203.0.113.89
 
 from .agent_based_api.v1 import *
 
