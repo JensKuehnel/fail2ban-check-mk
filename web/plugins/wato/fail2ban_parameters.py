@@ -22,6 +22,7 @@ from cmk.gui.valuespec import (
     Dictionary,
     Integer,
     TextAscii,
+    Tuple,
 )
 
 from cmk.gui.plugins.wato import (
