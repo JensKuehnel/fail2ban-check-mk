@@ -8,6 +8,7 @@ cp web/plugins/metrics/fail2ban_metric.py ~/local/share/check_mk/web/plugins/met
 chown $USER ~/local/share/check_mk/web/plugins/metrics/fail2ban_metric.py
 chmod 755   ~/local/share/check_mk/web/plugins/metrics/fail2ban_metric.py
 
+mkdir -p ~/local/lib/check_mk/base/cee/plugins/bakery/
 cp lib/check_mk/base/cee/plugins/bakery/fail2ban.py   ~/local/lib/check_mk/base/cee/plugins/bakery/fail2ban.py
 chown $USER ~/local/lib/check_mk/base/cee/plugins/bakery/fail2ban.py
 chmod 755   ~/local/lib/check_mk/base/cee/plugins/bakery/fail2ban.py
@@ -23,6 +24,10 @@ chmod 755   ~/local/lib/check_mk/base/plugins/agent_based/fail2ban_checks.py
 cp agents/plugins/fail2ban ~/local/share/check_mk/agents/plugins/fail2ban
 chown $USER ~/local/share/check_mk/agents/plugins/fail2ban
 chmod 755   ~/local/share/check_mk/agents/plugins/fail2ban
+
+cp web/plugins/wato/fail2ban_bakery.py ~/local/share/check_mk/web/plugins/wato/fail2ban_bakery.py
+chown $USER ~/local/share/check_mk/web/plugins/wato/fail2ban_bakery.py
+chmod 755   ~/local/share/check_mk/web/plugins/wato/fail2ban_bakery.py
 
 rm -f ~/local/lib/python3/cmk/base/plugins/agent_based/__pycache__/fail2ban_checks.*
 rm -f ~/local/lib/python3/cmk/base/cee/plugins/bakery/__pycache__/fail2ban.*

@@ -10,12 +10,15 @@ from .bakery_api.v1 import FileGenerator, OS, Plugin, register
 
 
 def get_fail2ban_files(conf: Any) -> FileGenerator:
-    yield Plugin(base_os=OS.LINUX, source=Path("fail2ban"))
+    yield Plugin(
+            base_os=OS.LINUX,
+            source=Path('fail2ban')
+            target=Path('fail2ban'),
+            )
 
 
 register.bakery_plugin(
     name="fail2ban",
-    files_function=fail2ban,
+    files_function=get_fail2ban_files,
 )
-
 
